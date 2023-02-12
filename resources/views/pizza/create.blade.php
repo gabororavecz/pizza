@@ -3,29 +3,37 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-     <div class="col-md-4">  <!-- dividing page col md 4 size first one  -->
+        <div class="col-md-4">  <!-- dividing page col md 4 size first one  -->
             <div class="card">
                 <div class="card-header">Menu</div>
 
-                <div class="card-body">
-                    <ul class="list-group">
-                    <a href="" class="list-group-item list-group-item-action">View</a>
-                    <a href="" class="list-group-item list-group-item-action">Create</a>
-                </ul>    
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <a href="" class="list-group-item list-group-item-action">View</a>
+                            <a href="" class="list-group-item list-group-item-action">Create</a>
+                        </ul>    
+                    </div>
                 </div>
-            </div>
+                @if(count($errors)>0)   <!-- if statement -->
+                <div class="card mt-5">
+                    <div class="card-body">
+               
+                <div class="alert alert-danger">
+                    @foreach ($errors->all() as $error )
+                    <p> {{ $error }} </p>
+                    @endforeach
+                </div> 
+            
         </div>
+               
+    </div>
+                    @endif
+</div>
          <div class="col-md-8"> <!--dividing page col md 8 size second part -->
             <div class="card">
                 <div class="card-header">Pizza</div>
-            @if(count($errors)>0)   <!-- if statement -->
-            <div class="alert alert-danger">
-                @foreach ($erros->all() as $error )
-                <p> {{ $error }} </p>
-                @endforeach
-            </div> 
-            @endif
-                <form action="{{route('pizza.store')}}" method="post">@csrf
+           
+                <form action="{{route('pizza.store')}}" method="post" enctype="multipart/form-data">@csrf
                 <div class="card-body">
                     <div class="form-group">
                     <label for ="name">Name of pizza</label>

@@ -11,9 +11,9 @@ class PizzaStoreRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize() //authorization
     {
-        return false;
+        return true;  //  with value true authurizing user to create new pizzas, if set it for false then unauthorize it
     }
 
     /**
@@ -26,9 +26,9 @@ class PizzaStoreRequest extends FormRequest
         return [
             'name' => 'required|string|min:3|max:40',
             'description'=>'required|min:3|max:500',
-            'small_pizza_price'=>'required|number',
-            'medium_pizza_price'=>'required|number',
-            'large_pizza_price'=>'required|number',
+            'small_pizza_price'=>'required|numeric',
+            'medium_pizza_price'=>'required|numeric',
+            'large_pizza_price'=>'required|numeric',
             'category'=>'required',
             'image'=>'required|mimes:png,jpeg,jpg'
         ];
